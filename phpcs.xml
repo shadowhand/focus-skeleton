@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<ruleset>
+  <arg name="basepath" value="."/>
+  <arg name="extensions" value="php"/>
+  <arg name="parallel" value="80"/>
+  <arg name="cache" value=".phpcs-cache"/>
+  <arg name="colors"/>
+
+  <!-- Ignore warnings, show progress of the run and show sniff names -->
+  <arg value="nps"/>
+
+  <!-- Paths to be checked -->
+  <file>config</file>
+  <file>src</file>
+  <file>tests</file>
+
+  <!-- Use Doctrine Coding Standard with customizations -->
+  <rule ref="Doctrine">
+    <exclude name="Generic.Formatting.MultipleStatementAlignment"/>
+    <exclude name="Generic.NamingConventions.ConstructorName.OldStyle"/>
+    <exclude name="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue.NullabilitySymbolRequired"/>
+    <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableParameterTypeHintSpecification"/>
+    <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversablePropertyTypeHintSpecification"/>
+    <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableReturnTypeHintSpecification"/>
+    <exclude name="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed"/>
+  </rule>
+
+  <!-- Configure namespace matching -->
+  <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+    <properties>
+      <property name="rootNamespaces" type="array">
+        <element key="src" value="Focus"/>
+        <element key="tests" value="Focus\Tests"/>
+      </property>
+    </properties>
+  </rule>
+
+  <!-- Configure return type spacing -->
+  <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing">
+    <properties>
+      <property name="spacesCountBeforeColon" value="0"/>
+    </properties>
+  </rule>
+</ruleset>
